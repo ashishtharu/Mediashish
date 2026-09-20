@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>HealthHub — Admin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="logo" href="index.html"><span>♥</span> HealthHub</a>
+    <div class="admin-topbar-right">
+      <a href="index.html" class="btn secondary small">View site</a>
+      <button id="logoutBtn" class="btn secondary small" hidden>Log out</button>
+    </div>
+  </div>
+</header>
+
+<main class="container admin-main">
+
+  <!-- LOGIN SCREEN -->
+  <section id="loginScreen" class="admin-card login-card">
+    <span class="eyebrow">ADMIN</span>
+    <h2>Log in</h2>
+    <p class="muted">Log in with your admin email and password.</p>
+    <form id="loginForm" class="admin-form">
+      <input id="emailInput" type="email" placeholder="Admin email" required autocomplete="username">
+      <input id="passwordInput" type="password" placeholder="Password" required autocomplete="current-password">
+      <button class="btn primary" type="submit">Log in</button>
+      <p id="loginError" class="form-error" hidden></p>
+    </form>
+    <p class="admin-hint">Admin accounts are created in your Firebase console (see SETUP.md) — there's no default password.</p>
+  </section>
+
+  <!-- ADMIN DASHBOARD -->
+  <section id="dashboard" hidden>
+    <div class="section-head admin-head">
+      <div><span class="eyebrow">ADMIN</span><h2>Manage products</h2></div>
+    </div>
+
+    <div class="admin-grid">
+      <!-- Add / edit product form -->
+      <div class="admin-card">
+        <h3 id="formTitle">Add a product</h3>
+        <form id="productForm" class="admin-form">
+          <input type="hidden" id="productId">
+          <label>Product name
+            <input id="pName" type="text" required placeholder="e.g. Digital Thermometer">
+          </label>
+          <label>Category
+            <select id="pCategory">
+              <option>Medicine</option>
+              <option>Nutrition</option>
+              <option>Fitness</option>
+              <option>First Aid</option>
+              <option>Wellness</option>
+              <option>Prevention</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Price (Rs.)
+            <input id="pPrice" type="number" min="0" step="1" required placeholder="e.g. 450">
+          </label>
+          <label>Description
+            <textarea id="pDescription" rows="3" placeholder="Short description shown to customers"></textarea>
+          </label>
+          <label>Image URL <span class="muted">(optional)</span>
+            <input id="pImage" type="url" placeholder="https://...">
+          </label>
+          <label class="checkbox-row">
+            <input id="pStock" type="checkbox" checked> In stock
+          </label>
+          <div class="admin-form-actions">
+            <button class="btn primary" type="submit">Save product</button>
+            <button class="btn secondary" type="button" id="cancelEditBtn" hidden>Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Product list -->
+      <div class="admin-card">
+        <h3>Current products (<span id="productCount">0</span>)</h3>
+        <div id="adminProductList" class="admin-product-list"></div>
+        <p id="noProducts" class="muted" hidden>No products yet. Add your first one on the left.</p>
+      </div>
+    </div>
+
+    <div class="admin-card settings-card">
+      <h3>Change your password</h3>
+      <form id="passwordForm" class="admin-form inline-form">
+        <input id="newPassword" type="password" placeholder="New password" required minlength="6">
+        <button class="btn secondary" type="submit">Update password</button>
+      </form>
+      <p id="passwordSaved" class="form-success" hidden>Password updated.</p>
+      <p id="passwordError" class="form-error" hidden></p>
+    </div>
+
+    <div class="admin-card note-card">
+      <b>Where is this saved?</b>
+      <p>Products are stored in a real shared database (Firebase Firestore) and logins are handled by Firebase Authentication. Any change made here appears instantly for every visitor, on any device — and your password is verified by Firebase's servers, never stored in this site's code.</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="firebase-config.js"></script>
+<script type="module" src="products.js"></script>
+<script type="module" src="admin.js"></script>
+</body>
+</html>
