@@ -61,6 +61,9 @@ function hhRenderShop(products) {
 }
 
 /* ---------- product detail modal ---------- */
+function hhDetailRow(label, value) {
+  return value ? `<div class="modal-detail"><b>${label}</b><span>${value}</span></div>` : "";
+}
 function hhOpenProductModal(p) {
   const overlay = document.querySelector("#productModal");
   if (!overlay) return;
@@ -70,6 +73,13 @@ function hhOpenProductModal(p) {
   document.querySelector("#modalTag").textContent = p.category || "General";
   document.querySelector("#modalName").textContent = p.name;
   document.querySelector("#modalDesc").textContent = p.description || "";
+  document.querySelector("#modalDetails").innerHTML = [
+    hhDetailRow("Composition", p.composition),
+    hhDetailRow("Uses & benefits", p.uses),
+    hhDetailRow("Side effects", p.sideEffects),
+    hhDetailRow("Dosage", p.dosage),
+    hhDetailRow("How to take", p.howToTake)
+  ].join("");
   document.querySelector("#modalPrice").textContent = hhFormatPrice(p.price);
   const stockEl = document.querySelector("#modalStock");
   stockEl.textContent = p.stock === false ? "Out of stock" : "In stock";

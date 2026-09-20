@@ -88,6 +88,11 @@ productForm.addEventListener("submit", async (e) => {
       category: document.querySelector("#pCategory").value,
       price: Number(document.querySelector("#pPrice").value) || 0,
       description: document.querySelector("#pDescription").value.trim(),
+      composition: document.querySelector("#pComposition").value.trim(),
+      uses: document.querySelector("#pUses").value.trim(),
+      sideEffects: document.querySelector("#pSideEffects").value.trim(),
+      dosage: document.querySelector("#pDosage").value.trim(),
+      howToTake: document.querySelector("#pHowToTake").value.trim(),
       image: document.querySelector("#pImage").value.trim(),
       buyLink: document.querySelector("#pBuyLink").value.trim(),
       stock: document.querySelector("#pStock").checked,
@@ -113,6 +118,11 @@ function editProduct(id) {
   document.querySelector("#pCategory").value = product.category;
   document.querySelector("#pPrice").value = product.price;
   document.querySelector("#pDescription").value = product.description || "";
+  document.querySelector("#pComposition").value = product.composition || "";
+  document.querySelector("#pUses").value = product.uses || "";
+  document.querySelector("#pSideEffects").value = product.sideEffects || "";
+  document.querySelector("#pDosage").value = product.dosage || "";
+  document.querySelector("#pHowToTake").value = product.howToTake || "";
   document.querySelector("#pImage").value = product.image || "";
   document.querySelector("#pBuyLink").value = product.buyLink || "";
   document.querySelector("#pStock").checked = product.stock !== false;
