@@ -113,6 +113,23 @@
     <div>© <span id="year"></span> HealthHub</div>
   </div>
 </footer>
+<div id="productModal" class="modal-overlay">
+  <div class="modal-box">
+    <button id="modalCloseBtn" class="modal-close-btn" aria-label="Close">✕</button>
+    <div id="modalImage" class="modal-img"></div>
+    <div class="modal-content">
+      <div id="modalTag" class="tag"></div>
+      <h3 id="modalName"></h3>
+      <p id="modalDesc" class="modal-desc"></p>
+      <div class="modal-footer">
+        <span id="modalPrice" class="price"></span>
+        <span id="modalStock" class="stock-badge in"></span>
+      </div>
+      <a id="modalBuyBtn" class="btn primary modal-buy" href="#" target="_blank" rel="noopener sponsored">Buy Product</a>
+    </div>
+  </div>
+</div>
+
 <script src="firebase-config.js"></script>
 <script type="module" src="products.js"></script>
 <script src="script.js"></script>

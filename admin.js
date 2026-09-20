@@ -89,6 +89,7 @@ productForm.addEventListener("submit", async (e) => {
       price: Number(document.querySelector("#pPrice").value) || 0,
       description: document.querySelector("#pDescription").value.trim(),
       image: document.querySelector("#pImage").value.trim(),
+      buyLink: document.querySelector("#pBuyLink").value.trim(),
       stock: document.querySelector("#pStock").checked,
       active: true
     };
@@ -113,6 +114,7 @@ function editProduct(id) {
   document.querySelector("#pPrice").value = product.price;
   document.querySelector("#pDescription").value = product.description || "";
   document.querySelector("#pImage").value = product.image || "";
+  document.querySelector("#pBuyLink").value = product.buyLink || "";
   document.querySelector("#pStock").checked = product.stock !== false;
   formTitle.textContent = "Edit product";
   cancelEditBtn.hidden = false;

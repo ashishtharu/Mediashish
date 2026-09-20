@@ -12,6 +12,40 @@ const search = document.querySelector("#search");
 const count = document.querySelector("#resultCount");
 const empty = document.querySelector("#empty");
 
+/* ---------- scroll-reveal + click ripple + section motion ---------- */
+const hhRevealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in-view"); hhRevealObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.15 });
+function hhReveal(container){
+  container.querySelectorAll(":scope > *").forEach(el => {
+    el.classList.add("reveal");
+    hhRevealObserver.observe(el);
+  });
+}
+window.hhReveal = hhReveal;
+
+const hhSectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in-view"); hhSectionObserver.unobserve(e.target); } });
+}, { threshold: 0.25 });
+document.querySelectorAll("#about, #contact").forEach(s => hhSectionObserver.observe(s));
+
+document.addEventListener("click", (e) => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const r = document.createElement("div");
+  r.className = "ripple";
+  r.style.left = e.clientX + "px";
+  r.style.top = e.clientY + "px";
+  document.body.appendChild(r);
+  setTimeout(() => r.remove(), 650);
+});
+
+const hhTopbar = document.querySelector(".topbar");
+window.addEventListener("scroll", () => {
+  hhTopbar.classList.toggle("scrolled", window.scrollY > 10);
+}, { passive: true });
+
 function render(list){
   grid.innerHTML = list.map(a => `
     <article class="article">
@@ -25,6 +59,7 @@ function render(list){
     </article>`).join("");
   count.textContent = `${list.length} article${list.length===1?"":"s"}`;
   empty.hidden = list.length !== 0;
+  hhReveal(grid);
 }
 function filter(){
   const q = search.value.toLowerCase().trim();
@@ -53,3 +88,4 @@ document.querySelector(".menu").addEventListener("click",()=> {
 });
 document.querySelector("#year").textContent = new Date().getFullYear();
 render(articles);
+hhReveal(document.querySelector(".categories"));
