@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HealthHub - simple, practical health information, wellness tips, first aid and nutrition articles.">
+  <title>HealthHub — Health & Wellness</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="logo" href="#"><span>♥</span> HealthHub</a>
+    <button class="menu" aria-label="Open menu">☰</button>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#articles">Articles</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">YOUR EVERYDAY HEALTH GUIDE</span>
+      <h1>Simple health information for <span>better everyday living.</span></h1>
+      <p>Explore practical articles about wellness, nutrition, first aid, fitness and everyday health habits.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#articles">Explore Articles</a>
+        <a class="btn secondary" href="#categories">Browse Topics</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="pulse">♥</div>
+      <h3>Healthy living, made simple.</h3>
+      <p>Clear, easy-to-read information designed for everyday readers.</p>
+      <div class="mini-stats"><div><b>6+</b><small>Topics</small></div><div><b>24/7</b><small>Access</small></div><div><b>100%</b><small>Free</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="search-section">
+  <div class="container">
+    <div class="search-box">
+      <span>⌕</span><input id="search" type="search" placeholder="Search health articles...">
+    </div>
+  </div>
+</section>
+
+<section id="categories" class="section">
+  <div class="container">
+    <div class="section-head"><div><span class="eyebrow">EXPLORE</span><h2>Health categories</h2></div></div>
+    <div class="categories">
+      <button class="category" data-cat="Medicine"><span>💊</span><b>Medicine</b><small>Medicines & basics</small></button>
+      <button class="category" data-cat="Nutrition"><span>🥗</span><b>Nutrition</b><small>Food & healthy habits</small></button>
+      <button class="category" data-cat="Fitness"><span>🏃</span><b>Fitness</b><small>Movement & exercise</small></button>
+      <button class="category" data-cat="First Aid"><span>🩹</span><b>First Aid</b><small>Safety & emergencies</small></button>
+      <button class="category" data-cat="Wellness"><span>🧘</span><b>Wellness</b><small>Mind & lifestyle</small></button>
+      <button class="category" data-cat="Prevention"><span>🛡️</span><b>Prevention</b><small>Healthy prevention</small></button>
+    </div>
+  </div>
+</section>
+
+<section id="articles" class="section articles-section">
+  <div class="container">
+    <div class="section-head"><div><span class="eyebrow">LATEST</span><h2>Featured articles</h2></div><span id="resultCount" class="result-count"></span></div>
+    <div id="articlesGrid" class="articles-grid"></div>
+    <div id="empty" class="empty" hidden>No matching articles found.</div>
+  </div>
+</section>
+
+<section id="about" class="about section">
+  <div class="container about-grid">
+    <div><span class="eyebrow">ABOUT HEALTHHUB</span><h2>Health information you can understand.</h2></div>
+    <div><p>HealthHub is a simple educational website concept for sharing accessible health and wellness information. Content should be reviewed by qualified healthcare professionals before being used for medical decisions.</p></div>
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <div class="container contact-card">
+    <div><span class="eyebrow">GET IN TOUCH</span><h2>Have a question?</h2><p>Use the form to send a message. This demo form is ready to connect to an email service later.</p></div>
+    <form onsubmit="event.preventDefault(); alert('Thanks! Your message form is working. Connect it to a form service before publishing.');">
+      <input required placeholder="Your name">
+      <input required type="email" placeholder="Email address">
+      <textarea required rows="4" placeholder="Your message"></textarea>
+      <button class="btn primary" type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<section class="disclaimer">
+  <div class="container"><b>Medical disclaimer:</b> This website is for general educational information only and is not a substitute for professional medical advice, diagnosis or treatment. In an emergency, contact local emergency services.</div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div><a class="logo" href="#"><span>♥</span> HealthHub</a><p>Simple health & wellness information.</p></div>
+    <div><a href="#about">About</a><a href="#contact">Contact</a><a href="#">Privacy Policy</a><a href="#">Disclaimer</a></div>
+    <div>© <span id="year"></span> HealthHub</div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
